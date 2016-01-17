@@ -14,6 +14,6 @@ object DriverProgram {
     res2.write.parquet("hdfs:///user/guest/people.parquet")
     val parquetFile = sqlContext.read.parquet("hdfs:///user/guest/people.parquet")
     parquetFile.registerTempTable("parquetFile")
-    val teenagers = sqlContext.sql("SELECT * FROM parquetFile ").collect().foreach(println)
+    sqlContext.sql("SELECT * FROM parquetFile ").collect().foreach(println)
   }
 }
